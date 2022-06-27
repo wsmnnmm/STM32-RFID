@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>宿舍检修管理系统</title>
+</head>
+<body>
+<h1>记录查询</h1>
+<button onClick="window.location.href='home';" >返回主页</button>
+<br/><br/>
+历史记录：
+<table border="1">
+           <!--表格头-->
+           <thead>
+              <tr>
+                <th>卡号</th>
+                <th>宿舍号</th>
+                <th>维修记录</th>
+				<th>时间</th>
+              </tr>
+            </thead>
+            <!--表格内容-->
+            <tbody>
+               <!--循环遍历-->
+               {% for rowx in listxto %}
+               <tr>
+                 <td>{{rowx.card}}</td>
+                 <td>{{rowx.dorm}}</td>
+                 <td>{{rowx.text}}</td>
+				 <td>{{rowx.time}}</td>
+               </tr>
+              {% endfor %}
+           </tbody>
+</table>
+</body>
+</html>

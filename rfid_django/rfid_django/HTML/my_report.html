@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>宿舍检修管理系统</title>
+</head>
+<body>
+<h1>维修上报</h1>
+<button onClick="window.location.href='home';" >返回主页</button>
+<br/><br/><br/>
+卡&nbsp;&nbsp;&nbsp;&nbsp;号：<input type="text" placeholder="" required="" id="card" readonly="readonly"/>
+<br/><br/>
+维修记录:<br/>
+<textarea rows="10" cols="100" id="texts">
+</textarea
+<br/><br/><br/><br/>
+<button onClick="ok_button()" style="height: 30px;width: 300px;">上传</button>
+	
+	
+</body>
+	
+<script>
+	//删除按键
+	function ok_button(){
+		var card=document.getElementById("card").value;
+		var texts=document.getElementById("texts").value;
+		
+		var xmld=new XMLHttpRequest();
+		xmld.open("POST","my_report_post/");
+		xmld.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		//'X-CSRFToken': csrftoken
+		xmld.send("rd="+"{\"card\":\""+card+"\",\"texts\":\""+texts+"\"}");
+		xmld.onreadystatechange=function(){ 
+			if(xmld.readyState == 4){
+				alert(xmld.responseText);
+			}
+		};
+
+	}
+	
+	//获取卡号
+	function getcarid(){
+		var xmld=new XMLHttpRequest();
+		xmld.open("GET","getcarid");
+		xmld.send("getcarid");
+		xmld.onreadystatechange=function(){ 
+			if(xmld.readyState == 4){
+				//alert(xmld.responseText);
+				document.getElementById("card").value=xmld.responseText;
+			}
+		};
+	}
+	//刷新显示
+	timeflush= setInterval(function(){
+	  getcarid();
+	}
+	,2000);	
+	getcarid();
+	
+	
+	
+	//确认删除按键
+	function deleteok(obj){
+	//alert(obj.getAttribute("delid"));
+	var data = [];
+	var person1 = new Object();
+	person1.delid=obj.getAttribute("delid");
+	data.push(person1);
+	var senddata = JSON.stringify(data);
+		
+	var xmld=new XMLHttpRequest();
+	xmld.open("POST","php_data/msg_data.php");
+	xmld.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	xmld.send("msg_obj_del="+senddata);
+	xmld.onreadystatechange=function(){ 
+		if(xmld.readyState == 4){
+			//alert(xmld.responseText);
+			if(xmld.status!=200){
+				showmsg("错误","用户删除","网络连接失败");
+			}else{
+			    o=JSON.parse(xmld.responseText);
+				if(o["res"]=="ok"){
+					location.reload(); 
+				}else{
+					showmsg("错误","用户删除",o["msg"]);
+				}
+			}
+		}
+	};
+	}
+	
+</script>
+	
+</html>
