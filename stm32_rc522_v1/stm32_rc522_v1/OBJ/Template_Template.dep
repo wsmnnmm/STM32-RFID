@@ -861,7 +861,7 @@ I (..\STM32F10x_FWLib\inc\misc.h)(0x5E8DABD4)
 I (..\HARDWARE\UART1\uart1.h)(0x5F3841CD)
 I (F:\IotSoftware\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E53505C)
 I (F:\IotSoftware\Keil_v5\ARM\ARMCC\include\string.h)(0x5E53505C)
-F (..\HARDWARE\CARDID\cardid.c)(0x623DF4A2)(-c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\HARDWARE\UART1 -I ..\SYSTEM\time3 -I ..\HARDWARE\LED -I ..\HARDWARE\WIFICONTROL -I ..\HARDWARE\CARDID -I ..\HARDWARE\DHT22 -I ..\HARDWARE\BUZZER -I ..\HARDWARE\OLED -I ..\HARDWARE\MQ2-I.\RTE\_Template-IF:\IotSoftware\Keil_v5\Keil\STM32F1xx_DFP\2.4.0\Device\Include-IF:\IotSoftware\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER -DUSE_STM3210C_EVAL-o ..\obj\cardid.o --omf_browse ..\obj\cardid.crf --depend ..\obj\cardid.d)
+F (..\HARDWARE\CARDID\cardid.c)(0x62BBC7AE)(-c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\HARDWARE\UART1 -I ..\SYSTEM\time3 -I ..\HARDWARE\LED -I ..\HARDWARE\WIFICONTROL -I ..\HARDWARE\CARDID -I ..\HARDWARE\DHT22 -I ..\HARDWARE\BUZZER -I ..\HARDWARE\OLED -I ..\HARDWARE\MQ2-I.\RTE\_Template-IF:\IotSoftware\Keil_v5\Keil\STM32F1xx_DFP\2.4.0\Device\Include-IF:\IotSoftware\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER -DUSE_STM3210C_EVAL-o ..\obj\cardid.o --omf_browse ..\obj\cardid.crf --depend ..\obj\cardid.d)
 I (..\HARDWARE\CARDID\cardid.h)(0x5F5AB3C4)
 I (..\SYSTEM\sys\sys.h)(0x5E8DABD4)
 I (..\USER\stm32f10x.h)(0x5E8DABD4)

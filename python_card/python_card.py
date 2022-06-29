@@ -1,7 +1,7 @@
 import pymysql
 import serial
 
-UART_COM = "COM3"
+UART_COM = "COM4"
 
 # 数据库连接信息
 SQL_user = "root"

@@ -43,15 +43,12 @@ char PcdRequest(unsigned char req_code,unsigned char *pTagType)
 //  unsigned char xTest ;
    ClearBitMask(Status2Reg,0x08);
    WriteRawRC(BitFramingReg,0x07);
-
 //  xTest = ReadRawRC(BitFramingReg);
 //  if(xTest == 0x07 )
  //   { LED_GREEN  =0 ;}
  // else {LED_GREEN =1 ;while(1){}}
    SetBitMask(TxControlReg,0x03);
- 
    ucComMF522Buf[0] = req_code;
-
    status = PcdComMF522(PCD_TRANSCEIVE,ucComMF522Buf,1,ucComMF522Buf,&unLen);
 //     if(status  == MI_OK )
 //   { LED_GREEN  =0 ;}
@@ -62,8 +59,7 @@ char PcdRequest(unsigned char req_code,unsigned char *pTagType)
        *(pTagType+1) = ucComMF522Buf[1];
    }
    else
-   {   status = MI_ERR;   }
-   
+   {   status = MI_ERR;   }  
    return status;
 }
 
