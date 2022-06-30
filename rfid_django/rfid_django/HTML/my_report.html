@@ -25,7 +25,7 @@
 	//删除按键
 	function ok_button() {
 		var card = document.getElementById("card").value;
-		var texts = document.getElementById("texts").value;
+		var texts = document.getElementById("texts").value.trim();
 
 		var xmld = new XMLHttpRequest();
 		xmld.open("POST", "my_report_post/");

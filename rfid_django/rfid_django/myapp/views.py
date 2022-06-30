@@ -122,6 +122,11 @@ def getcarid(requestx):
     return HttpResponse(card_read())
 
 
+def getcarid_js(request):
+    resp = {'card': HttpResponse(card_read()).response}
+    return HttpResponse(resp)
+
+
 @csrf_exempt
 def my_register_post(requestx):
     jsstr = requestx.POST.get("rd", "{}")
@@ -184,7 +189,9 @@ class Reportclass(View):
 class Recordclass(View):
     def get(self, requestx):  # 当请求为get时进入
         rlist = card_record()
-        return render(requestx, "my_record.html", {"listxto": rlist})  # 返回文件
+        crad = card_read()
+        # 返回文件
+        return render(requestx, "my_record.html", {"listxto": rlist, "newcrad": crad})
 
     def post(self, requestx):  # 当请求为POST时进入
         return HttpResponse(requestx.POST.get("user", "无数据"))

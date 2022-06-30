@@ -1,36 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>宿舍检修管理系统</title>
+  <meta charset="UTF-8">
+  <title>宿舍检修管理系统</title>
+  <style>
+    #record {
+      display: none;
+    }
+  </style>
 </head>
+
 <body>
-<h1>记录查询</h1>
-<button onClick="window.location.href='home';" >返回主页</button>
-<br/><br/>
-历史记录：
-<table border="1">
-           <!--表格头-->
-           <thead>
-              <tr>
-                <th>卡号</th>
-                <th>宿舍号</th>
-                <th>维修记录</th>
-				<th>时间</th>
-              </tr>
-            </thead>
-            <!--表格内容-->
-            <tbody>
-               <!--循环遍历-->
-               {% for rowx in listxto %}
-               <tr>
-                 <td>{{rowx.card}}</td>
-                 <td>{{rowx.dorm}}</td>
-                 <td>{{rowx.text}}</td>
-				 <td>{{rowx.time}}</td>
-               </tr>
-              {% endfor %}
-           </tbody>
-</table>
+  <h1>记录查询</h1>
+  <button onClick="window.location.href='home';">返回主页</button>
+  <button onClick="window.location.href='my_record';" id="record">查看记录</button>
+
+  <br /><br />
+  当前卡号：<span id="newcrad">{{newcrad}}</span>
+  <br>
+  当前卡号历史记录：
+  <table border="1">
+    <!--表格头-->
+    <thead>
+      <tr>
+        <th>卡号</th>
+        <th>宿舍号</th>
+        <th>维修记录</th>
+        <th>时间</th>
+      </tr>
+    </thead>
+    <!--表格内容-->
+    <tbody>
+      <!--循环遍历-->
+      {% for rowx in listxto %}
+      <div class="if/else">
+        {% if newcrad == rowx.card%}
+        <tr>
+          <td>{{rowx.card}}</td>
+          <td>{{rowx.dorm}}</td>
+          <td>{{rowx.text}}</td>
+          <td>{{rowx.time}}</td>
+        </tr>
+
+        {% endif %}
+      </div>
+
+      {% endfor %}
+    </tbody>
+  </table>
+  <br /><br />
+
+  <!-- <div>
+    {%if newcrad == "862D51F9"%}
+
+    所有卡号历史记录：
+    <table border="1">
+      <thead>
+        <tr>
+          <th>卡号</th>
+          <th>宿舍号</th>
+          <th>维修记录</th>
+          <th>时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for rowx in listxto %}
+        <tr>
+          <td>{{rowx.card}}</td>
+          <td>{{rowx.dorm}}</td>
+          <td>{{rowx.text}}</td>
+          <td>{{rowx.time}}</td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+  </div> -->
+
 </body>
+<script>
+  //获取卡号
+  function getcarid() {
+    var xmld = new XMLHttpRequest();
+    xmld.open("GET", "getcarid");
+    xmld.send("getcarid");
+    xmld.onreadystatechange = function () {
+      if (xmld.readyState == 4) {
+        // console.log(xmld);
+        console.log(document.getElementById("newcrad").innerText)
+        if (document.getElementById("newcrad").innerText !== xmld.responseText) {
+          console.log("卡号是：", xmld.responseText)
+          document.getElementById("record").click();
+        }
+      }
+    };
+  }
+
+
+  //刷新显示
+  timeflush = setInterval(function () {
+    getcarid();
+  }
+    , 2000);
+  getcarid();
+</script>
+
 </html>
